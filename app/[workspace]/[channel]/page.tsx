@@ -40,6 +40,8 @@ export default function ChannelsPage() {
     }
   }, [workspace]);
 
+  console.log("workspace:", workspace);
+
   // デフォルトチャンネルが指定されていたら選択
   useEffect(() => {
     if (channels.length > 0 && defaultChannel) {
@@ -86,12 +88,6 @@ export default function ChannelsPage() {
     }
   };
 
-  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const bottom = e.currentTarget.scrollTop === 0;
-    if (bottom && !loadingMessages && selectedChannel) {
-      fetchMessages(selectedChannel.id, messages.length); // 次の20件を読み込む
-    }
-  };
 
   const handleThreadClick = (threadTs: string, channel: string) => {
     if (selectedChannel) {
@@ -153,7 +149,6 @@ export default function ChannelsPage() {
             ) : (
               <div
                 className="space-y-4 flex-grow overflow-y-auto"
-                onScroll={handleScroll}
               >
                 {visibleMessages.map((msg, idx) => (
                   <div key={idx} className="bg-white shadow-sm rounded-lg p-3 border border-gray-200">
