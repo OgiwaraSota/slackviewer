@@ -70,9 +70,10 @@ export default function ChannelsPage() {
     setLoadingMessages(true);
     setError(null);
     try {
-      const res = await fetch(
-        `https://my-java23-app-1053002991087.asia-northeast1.run.app/messages/workspace/${workspace}?channel=${selectedChannel.name}`
-      );
+      const encodedChannel = encodeURIComponent(selectedChannel.name);
+      const url = `https://my-java23-app-1053002991087.asia-northeast1.run.app/messages/workspace/${workspace}?channel=${encodedChannel}`;
+      const res = await fetch(url);
+      console.log("Fetch URL:", url);
       if (!res.ok) throw new Error("メッセージの取得に失敗しました");
 
       const data = await res.json();
