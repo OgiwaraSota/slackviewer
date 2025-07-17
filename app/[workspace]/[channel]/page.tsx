@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 
@@ -40,16 +39,20 @@ export default function ChannelsPage() {
     }
   }, [workspace]);
 
-  // デフォルトチャンネルが指定されていたら選択
   useEffect(() => {
     if (channels.length > 0 && defaultChannel) {
       const found = channels.find((c) => c.name === defaultChannel);
       if (found) {
         setSelectedChannel(found);
-        fetchMessages();
       }
     }
   }, [channels, defaultChannel]);
+
+  useEffect(() => {
+    if (selectedChannel) {
+      fetchMessages();
+    }
+  }, [selectedChannel]);
 
   console.log("selectedChannel:", selectedChannel);
 
