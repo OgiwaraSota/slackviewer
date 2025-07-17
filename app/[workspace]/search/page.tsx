@@ -164,7 +164,7 @@ export default function SearchPage() {
                     {msg.thread_ts && msg.thread_ts !== "null" && (
                     <button
                         onClick={() =>
-                        router.push(`/slackviewer/${workspace}/${msg.channel}/${msg.thread_ts}`)
+                        router.push(`/${workspace}/${msg.channel}/${msg.thread_ts}`)
                         }
                         className="mt-2 text-blue-500 hover:underline"
                     >

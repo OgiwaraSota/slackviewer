@@ -90,7 +90,7 @@ export default function ThreadPage() {
             <li
               key={channel.id}
               className={`p-2 hover:bg-gray-200 cursor-pointer rounded`}
-              onClick={() => router.push(`/slackviewer/${workspace}/${channel.name}`)}
+              onClick={() => router.push(`/${workspace}/${channel.name}`)}
             >
               #{channel.name}
             </li>
@@ -103,7 +103,7 @@ export default function ThreadPage() {
           <h1 className="text-2xl font-bold text-blue-600">スレッド: #{channel}</h1>
           <button
             className="text-sm text-blue-500 underline mt-2"
-            onClick={() => router.push(`/slackviewer/${workspace}/${channel}`)}
+            onClick={() => router.push(`/${workspace}/${channel}`)}
           >
             ← 元のメッセージに戻る
           </button>

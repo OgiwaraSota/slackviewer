@@ -22,7 +22,7 @@ export default function UploadPage() {
 
   useEffect(() => {
     if (isUploading === false && workspaceId) {
-      router.push(`/slackviewer/${workspaceId}`);
+      router.push(`/${workspaceId}`);
     }
   }, [isUploading, workspaceId]);
 

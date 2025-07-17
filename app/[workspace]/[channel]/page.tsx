@@ -94,7 +94,7 @@ export default function ChannelsPage() {
 
   const handleThreadClick = (threadTs: string, channel: string) => {
     if (selectedChannel) {
-      router.push(`/slackviewer/${workspace}/${channel}/${threadTs}`);
+      router.push(`/${workspace}/${channel}/${threadTs}`);
     }
   };
 
@@ -130,7 +130,7 @@ export default function ChannelsPage() {
               className={`p-2 hover:bg-gray-200 cursor-pointer rounded ${
                 selectedChannel?.id === channel.id ? "bg-blue-100 font-semibold" : ""
               }`}
-              onClick={() => router.push(`/slackviewer/${workspace}/${channel.name}`)}
+              onClick={() => router.push(`/${workspace}/${channel.name}`)}
             >
               #{channel.name}
             </li>
