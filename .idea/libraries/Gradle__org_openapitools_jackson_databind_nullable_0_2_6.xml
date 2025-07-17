@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.openapitools:jackson-databind-nullable:0.2.6" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.openapitools" artifactId="jackson-databind-nullable" version="0.2.6" baseVersion="0.2.6" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openapitools/jackson-databind-nullable/0.2.6/d8c7e6b4fcc10d36771d157fc011d2a04479e4a7/jackson-databind-nullable-0.2.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
