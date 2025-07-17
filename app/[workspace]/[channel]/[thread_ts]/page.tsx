@@ -149,13 +149,13 @@ export default function ThreadPage() {
       <div className="fixed bottom-8 right-8 space-y-6">
         <button
           className="bg-gradient-to-r from-green-600 to-green-400 text-white p-6 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out hover:from-green-500 hover:to-green-300 focus:outline-none focus:ring-4 focus:ring-blue-300 font-semibold"
-          onClick={() => router.push(`/slackviewer/${workspace}/search`)}
+          onClick={() => router.push(`/${workspace}/search`)}
         >
           SEARCH
         </button>
         <button
           className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-6 rounded-full shadow-lg hover:scale-105 transform transition duration-300 ease-in-out hover:from-blue-500 hover:to-blue-300 focus:outline-none focus:ring-4 focus:ring-green-300 font-semibold ml-2"
-          onClick={() => router.push("/slackviewer/upload")}
+          onClick={() => router.push("/")}
         >
           HOME
         </button>
