@@ -53,6 +53,8 @@ export default function ChannelsPage() {
     }
   }, [channels, defaultChannel]);
 
+  console.log("selectedChannel:", selectedChannel);
+
   const fetchChannels = async () => {
     try {
       const res = await fetch(`https://my-java23-app-1053002991087.asia-northeast1.run.app/channels/workspace/${workspace}`);
@@ -68,6 +70,7 @@ export default function ChannelsPage() {
 
   const fetchMessages = async (channelId: string, offset: number = 0) => {
     if (!selectedChannel) return; // selectedChannelがnullの場合は何もしない
+    console.log("fetchMessages called", channelId, offset);
 
     setLoadingMessages(true);
     setError(null);
