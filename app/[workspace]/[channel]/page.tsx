@@ -143,9 +143,6 @@ export default function ChannelsPage() {
 
       {/* メインエリア */}
       <main className="w-3/4 p-4 overflow-y-auto flex flex-col">
-        <div className="mb-4 sticky top-0 bg-white z-10">
-          <h1 className="text-2xl font-bold text-blue-600">Workspace: {workspace}</h1>
-        </div>
 
         {selectedChannel ? (
           <>
