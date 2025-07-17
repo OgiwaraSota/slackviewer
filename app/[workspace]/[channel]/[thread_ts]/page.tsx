@@ -1,6 +1,6 @@
 "use client"; // クライアントサイドで実行されることを明示する
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo} from "react";
 import { useParams, useRouter } from "next/navigation";
 
 // そのまま残すインターフェース定義やその他のコード
@@ -70,14 +70,21 @@ export default function ThreadPage() {
     }
   };
 
-  const sortedChannels = [...channels].sort((a, b) => {
-    const aMatch = a.name.match(/^\d{3}/);
-    const bMatch = b.name.match(/^\d{3}/);
-    if (aMatch && bMatch) return parseInt(aMatch[0]) - parseInt(bMatch[0]);
-    if (aMatch) return -1;
-    if (bMatch) return 1;
-    return 0;
-  });
+  const sortedChannels = useMemo(() => {
+      // チャンネル名の先頭に数字があるものを抽出
+      const numericChannels = channels.filter((c) => /^\d+/.test(c.name));
+      const nonNumericChannels = channels.filter((c) => !/^\d+/.test(c.name));
+  
+      numericChannels.sort((a, b) => {
+        const aMatch = a.name.match(/^\d+/);
+        const bMatch = b.name.match(/^\d+/);
+        const aNum = aMatch ? parseInt(aMatch[0], 10) : 0;
+        const bNum = bMatch ? parseInt(bMatch[0], 10) : 0;
+        return aNum - bNum;
+      });
+  
+      return [...numericChannels, ...nonNumericChannels];
+    }, [channels]);
 
   return (
     <div className="flex h-screen font-sans">

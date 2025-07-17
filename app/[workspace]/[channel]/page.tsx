@@ -99,12 +99,15 @@ export default function ChannelsPage() {
   };
 
   const sortedChannels = useMemo(() => {
-    const numericChannels = channels.filter((c) => /^\d{3}/.test(c.name));
-    const nonNumericChannels = channels.filter((c) => !/^\d{3}/.test(c.name));
+    // チャンネル名の先頭に数字があるものを抽出
+    const numericChannels = channels.filter((c) => /^\d+/.test(c.name));
+    const nonNumericChannels = channels.filter((c) => !/^\d+/.test(c.name));
 
     numericChannels.sort((a, b) => {
-      const aNum = parseInt(a.name.substring(0, 3), 10);
-      const bNum = parseInt(b.name.substring(0, 3), 10);
+      const aMatch = a.name.match(/^\d+/);
+      const bMatch = b.name.match(/^\d+/);
+      const aNum = aMatch ? parseInt(aMatch[0], 10) : 0;
+      const bNum = bMatch ? parseInt(bMatch[0], 10) : 0;
       return aNum - bNum;
     });
 
