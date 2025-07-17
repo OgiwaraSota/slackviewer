@@ -40,15 +40,13 @@ export default function ChannelsPage() {
     }
   }, [workspace]);
 
-  console.log("workspace:", workspace);
-
   // デフォルトチャンネルが指定されていたら選択
   useEffect(() => {
     if (channels.length > 0 && defaultChannel) {
       const found = channels.find((c) => c.name === defaultChannel);
       if (found) {
         setSelectedChannel(found);
-        fetchMessages(found.id);
+        fetchMessages();
       }
     }
   }, [channels, defaultChannel]);
@@ -68,9 +66,9 @@ export default function ChannelsPage() {
     }
   };
 
-  const fetchMessages = async (channelId: string, offset: number = 0) => {
+  const fetchMessages = async () => {
     if (!selectedChannel) return; // selectedChannelがnullの場合は何もしない
-    console.log("fetchMessages called", channelId, offset);
+    console.log("fetchMessages called");
 
     setLoadingMessages(true);
     setError(null);
