@@ -167,8 +167,6 @@ export default function ThreadPage() {
           HOME
         </button>
       </div>
-
-
     </div>
   );
 }
