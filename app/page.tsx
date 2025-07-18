@@ -193,6 +193,26 @@ export default function UploadPage() {
           className="border border-gray-300 rounded-lg px-4 py-2 mb-4 w-64"
         />
 
+        {/* ドラッグ＆ドロップボックス */}
+        <div
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => {
+            e.preventDefault();
+            if (e.dataTransfer.files.length > 0) {
+              const droppedFile = e.dataTransfer.files[0];
+              if (droppedFile.name.endsWith(".zip")) {
+                setFile(droppedFile);
+              } else {
+                alert("zipファイルを選択してください");
+              }
+            }
+          }}
+          className="border-2 border-dashed border-blue-400 rounded-lg p-8 mb-4 w-80 text-center text-gray-600 hover:border-blue-600 transition"
+        >
+          ここにzipファイルをドラッグ＆ドロップ
+        </div>
+
+        {/* 通常のファイル選択ラベル */}
         <label className="bg-blue-500 text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-blue-600 mb-4">
           zipファイルを選択
           <input
@@ -213,5 +233,6 @@ export default function UploadPage() {
           {isUploading ? "アップロード中..." : "送信"}
         </button>
       </div>
+
     </div>
   );}
